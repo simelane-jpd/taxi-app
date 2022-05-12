@@ -1,0 +1,44 @@
+table {
+    background-color:#06d6a0;
+   
+    border-radius: solid;
+}
+body {
+    background-color:#ff006e;
+    font-family: 'Courier New', Courier, monospace;
+}
+@media (min-width: 560px) {
+    body {
+        background-color: #03071e;
+    }
+    table {
+        background-color:#e85d04;
+       
+        border-radius: solid;
+    }
+    }
+   
+    h1 {
+        color:#adc178;
+    }
+
+
+@media (min-width: 960px) {
+    body {
+        background-color:#ff006e;
+    }
+    table {
+        background-color:#06d6a0;
+       
+        border-radius: solid;
+        border: solid;
+    }
+    
+}
+
+.btn {
+    background-color:#f4978e;
+}
+.Btn {
+    background-color:chartreuse;
+}
