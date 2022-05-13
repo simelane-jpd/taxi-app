@@ -1,22 +1,40 @@
 table {
-    background-color:#0a9396;
-   
-    border-radius: solid;
+    background-color: chartreuse;
 }
 body {
     background-color:#ff006e;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: cursive;
 }
 @media (min-width: 560px) {
     body {
         background-color: #03071e;
     }
     table {
-        background-color:#e85d04;
+        box-sizing: border-box;
+        overflow: hidden;
+        background-color: yellow;
+        border-collapse: collapse;
+        border: solid;
+        min-width: 23em; width: 70%; max-width: 56em;
+        border-radius: .5em;
+        box-shadow: 0 0 .5em #000;
+      }
        
-        border-radius: solid;
-    }
-    }
+      thead {
+        background: linear-gradient(#606062, #28262b);
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+       
+      th { text-align: left; }
+       
+     
+    
+}
+   
+   
    
     h1 {
         color:#662e9b;
@@ -28,11 +46,26 @@ body {
         background-color:#ff006e;
     }
     table {
-        background-color:#0a9396;
+        box-sizing: border-box;
+        overflow: hidden;
+        background-color:chartreuse;
+        border-collapse: collapse;
+        min-width: 23em; width: 70%; max-width: 56em;
+        border-radius: .5em;
+        box-shadow: 0 0 .5em #000;
+      }
        
-        border-radius: solid;
-        border: solid;
-    }
+      thead {
+        background: linear-gradient(#606062, #28262b);
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+       
+      th { text-align: left; }
+       
+     
     
 }
 
@@ -40,5 +73,5 @@ body {
     background-color:#f4978e;
 }
 .Btn {
-    background-color:chartreuse;
+    background-color:green;
 }

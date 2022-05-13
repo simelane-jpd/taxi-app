@@ -17,12 +17,12 @@
         <div x-data="{ errorMessage: false }">
             <div x-data="{ successMessage: false }">
                 <div x-data="{ noTaxisError: false }">
-                    <p id="snackbar" x-show="errorMessage">taxi needs 10 passengers to depart</p>
-                    <p id="snackbar" x-show="noTaxisError">there are currently no taxis available</p>
-                    <p id="snackbar" x-show="successMessage">taxi has successfully departed</p>
+                    <p id="snackbar" x-show="errorMessage">Taxi needs a minimum of 10 passengers to depart</p>
+                    <p id="snackbar" x-show="noTaxisError">No taxis are available</p>
+                    <p id="snackbar" x-show="successMessage">Taxi has left</p>
                     <div x-data="{ rank : [{
                         destination: 'Makhaza',
-                        queue: 10,
+                        passenger: 10,
                         departedTaxis: 0,
                         taxiFare: 15,
                         totalFare: 0,
@@ -30,7 +30,7 @@
                     },
                     {
                         destination: 'Belhar',
-                        queue: 10,
+                        passenger: 10,
                         departedTaxis: 0,
                         taxiFare: 20,
                         totalFare: 0,
@@ -38,51 +38,57 @@
                     },
                     {
                         destination: 'Bellville',
-                        queue: 10,
+                        passenger: 10,
                         departedTaxis: 0,
                         taxiFare: 25,
                         totalFare: 0,
                         availTaxis: 3
                     }]}">
+                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Add new destination
+                      </button>
                         <template x-for="taxi in rank">
                             <table class="table">
 
                                 <tr>
                                     <th>Destination</th>
                                     <th>Passengers</th>
+                                    
                                     <th>Taxi trips</th>
-                                    <!--th scope="col">Trip Fare</th>
-                                        <th scope="col">Total Fare Made</th>
-                                        <th scope="col">Available Taxis</th-->
+                                    <th>Available Taxis</th>
+                                    <th>Taxi Fare</th>
+                                        <th>Total taxi fare</th>
+                                       
                                 </tr>
 
 
                                 <tr>
                                     <td>
-                                        <p x-text="taxi.destination"></p>
+                                        <p x-text="taxi.destination"></p> 
                                     </td>
 
                                     <td>
-                                        <button class="btn" x-on:click="taxi.queue++">+</button>
-                                        <span x-text="taxi.queue"></span>
-                                        <button class="btn" x-on:click="taxi.queue--">-</button>
+                                        <button class="btn" x-on:click="taxi.passenger++">+</button>
+                                        <span x-text="taxi.passenger"></span>
+                                        <button class="btn" x-on:click="taxi.passenger--">-</button>
                                     </td>
 
 
                                     <td><button class="Btn"
-                                            x-on:click="if (taxi.queue >= 10 && taxi.availTaxis > 0) {taxi.queue-=10, taxi.departedTaxis++, taxi.totalFare+=taxi.taxiFare, taxi.availTaxis--, successMessage=true} else if (taxi.queue < 10) {errorMessage=true; setTimeout(() => { errorMessage=false }, 2000)}; setTimeout(() => { successMessage=false }, 2000); if (taxi.availTaxis <= 0){noTaxisError=true} setTimeout(() => { noTaxisError=false }, 2000)">Leave
-                                        </button> <button class="Btn"> <span x-text="taxi.departedTaxis"></span>
-                                            taxi(s)
-                                            left</button></td>
-                                    <!--td>
-                                            <p x-text="taxi.taxiFare.toFixed(2)"></p>
+                                            x-on:click="if ( taxi.passenger >= 10 && taxi.availTaxis > 0) { taxi.availTaxis--, taxi.passenger-=10, taxi.departedTaxis++, taxi.totalFare+=taxi.taxiFare,  successMessage=true} else if (taxi.passenger < 10) {errorMessage=true; setTimeout(() => { errorMessage=false }, 2000)}; setTimeout(() => { successMessage=false }, 2000); if (taxi.availTaxis <= 0){noTaxisError=true} setTimeout(() => { noTaxisError=false }, 2000)">Leave
+                                        </button> 
+                                         <button><span x-text="taxi.departedTaxis"></span>
+                                            Taxi left</button></td>
+                                            <td>
+                                               <button class="but" x-text="taxi.availTaxis"></button>
+                                            </td>
+                                    <td>
+                                            R<span x-text="taxi.taxiFare.toFixed(2)"></span>
                                         </td>
-                                        <td>
-                                            <p x-text="taxi.totalFare.toFixed(2)"></p>
+                                        <td>R<span
+                                             x-text="taxi.totalFare.toFixed(2)"></span>
                                         </td>
-                                        <td>
-                                            <p x-text="taxi.availTaxis"></p>
-                                        </td-->
+                                       
                                 </tr>
 
                             </table>
@@ -95,8 +101,8 @@
 
 
 
-
-   
+<script src="index.js"></script>
+ 
 </body>
 
 </html>
