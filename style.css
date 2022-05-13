@@ -3,7 +3,7 @@ table {
 }
 body {
     background-color:#ff006e;
-    font-family: cursive;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 @media (min-width: 560px) {
     body {
