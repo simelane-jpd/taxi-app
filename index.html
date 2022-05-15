@@ -11,6 +11,7 @@
 </head>
 
 <body>
+   
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <div class="container">
         <h1>Taxi App</h1>
@@ -20,7 +21,7 @@
                     <p id="snackbar" x-show="errorMessage">Taxi needs a minimum of 10 passengers to depart</p>
                     <p id="snackbar" x-show="noTaxisError">No taxis are available</p>
                     <p id="snackbar" x-show="successMessage">Taxi has left</p>
-                    <div x-data="{ rank : [{
+                    <div x-data="{ rank: [{
                         destination: 'Makhaza',
                         passenger: 10,
                         departedTaxis: 0,
@@ -44,13 +45,66 @@
                         totalFare: 0,
                         availTaxis: 3
                     }]}">
+                   
+                    <!--div class="model-inner" x-data="{ destination: '' }">
+                        <span x-data="{ fare: '' }">
+                            <span x-data="{ taxis: '' }">
+                                <span x-data="{que:'' }">
+                                <h3>add a new destination</h3>
+                                
+
+                                <p>
+                                    Destination: <br> <input type="text" x-model="destination">
+                                </p>
+                                <p>
+                                    Trip fare: <br> <input type="text" x-model="fare">
+                                </p>
+                                <p>
+                                    Available taxis: <br> <input type="text" x-model="taxis">
+                                </p>
+                                <P>passengers 
+                                    <input type="number" x-model="que">
+                                </P>
+                               
+
+                                <button class="btn btn-dark" aria-label="Close"
+                                    x-on:click="rank.push({ destination: destination,
+                                    queue: 0,
+                                    departedTaxis: 0,
+                                    taxiFare: fare,
+                                    totalFare: 0,
+                                    availTaxis: taxis
+                                    });successMessage=true;$refs.successMessage.innerText = 'destination added'; setTimeout(() => { successMessage=false }, 2000);isModalOpen=false">save</button>
+                                <button class="btn btn-dark" aria-label="Close"
+                                    x-on:click="isModalOpen=false">close</button>
+                            </span>
+                        </span>
+                    </span>
+                    </div-->
+                   
+                
+<!--button><p x-text="taxi.destination"></p>Add destination </button-->
+
+                    
+                        
+
+                            <!--div x-data="{ rank}">
+                                Total profit for today: R <span x-text="taxi.totalFare.toFixed(2)"></span></div-->
+
+                        <!--div>
+                            <strong>Total profit for the day: R<span x-text="(rank, function(taxi) {return taxi.dailyProfit.toFixed(2)})"></span></strong>
+                        </div-->
+                        
+                        
                     <!--button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Add new destination
                       </button-->
-                        <template x-for="taxi in rank">
+                      
+                       
                             <table class="table">
-
+<thead>
                                 <tr>
+                                    <th>Departure</th>
                                     <th>Destination</th>
                                     <th>Passengers</th>
                                     
@@ -58,11 +112,15 @@
                                     <th>Available Taxis</th>
                                     <th>Taxi Fare</th>
                                         <th>Total taxi fare</th>
+                                        <th>Add a taxi</th>
                                        
                                 </tr>
-
-
+                            </thead>
+<tbody>
+    <template x-for="taxi in rank">
                                 <tr>
+                                    <td>Cape Town</td>
+
                                     <td>
                                         <p x-text="taxi.destination"></p> 
                                     </td>
@@ -70,12 +128,13 @@
                                     <td>
                                         <button class="btn" x-on:click="taxi.passenger++">+</button>
                                         <span x-text="taxi.passenger"></span>
-                                        <button class="btn" x-on:click="taxi.passenger--">-</button>
+                                        <button class="btn" x-on:click="if (taxi.passenger >= 1) {taxi.passenger--}">-</button>
                                     </td>
 
 
                                     <td><button class="Btn"
-                                            x-on:click="if ( taxi.passenger >= 10 && taxi.availTaxis > 0) { taxi.availTaxis--, taxi.passenger-=10, taxi.departedTaxis++, taxi.totalFare+=taxi.taxiFare,  successMessage=true} else if (taxi.passenger < 10) {errorMessage=true; setTimeout(() => { errorMessage=false }, 2000)}; setTimeout(() => { successMessage=false }, 2000); if (taxi.availTaxis <= 0){noTaxisError=true} setTimeout(() => { noTaxisError=false }, 2000)">Leave
+                                            x-on:click="if ( taxi.passenger >= 10 && taxi.availTaxis > 0) {taxi.availTaxis--, taxi.passenger-=10, taxi.departedTaxis++, taxi.totalFare+=(taxi.taxiFare*10),
+                                                  successMessage=true} else if (taxi.passenger < 10) {errorMessage=true; setTimeout(() => { errorMessage=false }, 2000)}; setTimeout(() => { successMessage=false }, 2000); if (taxi.availTaxis <= 0){noTaxisError=true} setTimeout(() => { noTaxisError=false }, 2000)">Leave
                                         </button> 
                                          <button><span x-text="taxi.departedTaxis"></span>
                                             Taxi left</button></td>
@@ -83,14 +142,18 @@
                                                <button class="but" x-text="taxi.availTaxis"></button>
                                             </td>
                                     <td>
-                                            R<span x-text="taxi.taxiFare.toFixed(2)"></span>
+                                            R<span x-text="Number(taxi.taxiFare).toFixed(2)"></span>
                                         </td>
                                         <td>R<span
                                              x-text="taxi.totalFare.toFixed(2)"></span>
                                         </td>
+
+                                        <td><button class="btn btn-dark"
+                                                x-on:click="taxi.availTaxis++;$refs.successMessage.innerText = 'taxi added' ;successMessage=true;setTimeout(() => { successMessage=false }, 2000)">Add
+                                                a taxi</button></td>
                                        
                                 </tr>
-
+                            </tbody>
                             </table>
                         </template>
                     </div>
@@ -100,8 +163,8 @@
     </div>
 
 
+  
 
-<script src="index.js"></script>
  
 </body>
 
