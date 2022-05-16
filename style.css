@@ -7,7 +7,7 @@ body {
 }
 @media (min-width: 560px) {
     body {
-        background-color: #03071e;
+        background-color:orange;
     }
     table {
         box-sizing: border-box;
@@ -46,7 +46,9 @@ body {
         background-color:chartreuse;
         border-collapse: collapse;
         overflow: hidden;
-       
+        
+  
+  
       
         border: solid;
         min-width: 23em; width: 70%; max-width: 56em;
@@ -69,4 +71,16 @@ body {
 }
 .Btn {
     background-color:green;
+}
+
+.dark {
+    width:15%;
+    font-size: 15px; 
+    background-color:#f4978e;
+   
+   
+    
+}
+.dest {
+background-color: #662e9b;
 }

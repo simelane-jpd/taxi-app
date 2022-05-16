@@ -11,8 +11,18 @@
 </head>
 
 <body>
+   
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
- 
+   
+    <script>
+        let passengers = 10;
+        let passenger
+        let profit
+        let totalPerTrip
+        let userFare
+        let userDestination
+        
+    </script>
   
     <div class="container">
         <h1>Taxi App</h1>
@@ -46,10 +56,45 @@
                         totalFare: 0,
                         availTaxis: 3
                     }]}">
-                    
+                   
+                    <div x-data="{ isModalOpen: false}" x-on:keydown.escape="isModalOpen=false">
+                        <div class="modal-popup" role="dialog" x-show="isModalOpen"
+                            x-on:click.away="isModalOpen = false" x-cloak x-transition>
+                            <div class="model-inner" x-data="{ destination: '' }">
+                                <span x-data="{ taxiFare: '' }">
+                                    <span x-data="{ taxis: '' }">
+                                        
+                                        <p>
+                                            Destination:  <input type="text" x-model="destination">
+                                        </p>
+                                        <p>
+                                            Taxi fare:  <input type="number" x-model="taxiFare">
+                                        </p>
+                                        <p>
+                                            Available taxis:  <input type="text" x-model="taxis">
+                                        </p>
+
+                                        <button class="dark" aria-label="Close"
+                                            x-on:click="rank.push({ destination: destination,
+                                            passenger: 0,
+                                            departedTaxis: 0,
+                                            taxiFare: 50,
+                                            totalFare: 0,
+                                            availTaxis: taxis
+                                            });successMessage=true;$refs.successMessage.innerText = 'destination added'; setTimeout(() => { successMessage=false }, 2000);isModalOpen=false">Save</button>
+                                        <button class="dark" aria-label="Close"
+                                            x-on:click="isModalOpen=false">Close Window</button>
+                                    </span>
+                                </div>
+                           
+                            </div>
+                            <button class="dark" x-on:click="isModalOpen=true">Add new destination</button>
+                        
                       <!--div x-data="{ dailyProfit:  $persist(0)}">
                         Total profit for today: R <span x-text="dailyProfit.toFixed(2)"></span-->
-                       
+                            <!--div>
+                                <strong>Total profit for the day: R<span x-text="_.sumBy(rank, function(taxi) {return taxi.taxiFareTotal})"></span></strong>
+                            </div-->
                             <table class="table">
 <thead>
                                 <tr>
@@ -82,7 +127,7 @@
 
 
                                     <td><button class="Btn"
-                                            x-on:click="if ( taxi.passenger >= 10 && taxi.availTaxis > 0) {taxi.availTaxis--, taxi.passenger-=10, taxi.departedTaxis++, taxi.totalFare+=(taxi.taxiFare*10),
+                                            x-on:click="if ( taxi.passenger >= 10 && taxi.availTaxis > 0) {taxi.availTaxis--, taxi.passenger=taxi.passenger-passengers, taxi.departedTaxis++, taxi.totalFare=(taxi.taxiFare*passengers)*taxi.departedTaxis,
                                                   successMessage=true} else if (taxi.passenger < 10) {errorMessage=true; setTimeout(() => { errorMessage=false }, 2000)}; setTimeout(() => { successMessage=false }, 2000); if (taxi.availTaxis <= 0){noTaxisError=true} setTimeout(() => { noTaxisError=false }, 2000)">Leave
                                         </button> 
                                          <button><span x-text="taxi.departedTaxis"></span>
@@ -105,6 +150,7 @@
                             </tbody>
                             </table>
                         </template>
+                    </div>
                     </div>
                 </div>
             </div>
