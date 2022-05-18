@@ -2,6 +2,8 @@ table {
     background-color: chartreuse;
 }
 body {
+    margin-left: 10rem;
+    margin-right: 10rem;
     background-color:#ff006e;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
@@ -15,7 +17,7 @@ body {
         background-color: yellow;
         border-collapse: collapse;
         border: solid;
-        min-width: 23em; width: 70%; max-width: 56em;
+        min-width: 23em; width: 100%; max-width: 56em;
         border-radius: .5em;
         box-shadow: 0 0 .5em #000;
         text-align: center;
@@ -51,7 +53,7 @@ body {
   
       
         border: solid;
-        min-width: 23em; width: 70%; max-width: 56em;
+        min-width: 23em; width: 100%; max-width: 56em;
         border-radius: .5em;
         box-shadow: 0 0 .5em #000;
       
@@ -84,3 +86,5 @@ body {
 .dest {
 background-color: #662e9b;
 }
+
+

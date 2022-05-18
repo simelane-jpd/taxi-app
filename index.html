@@ -81,7 +81,10 @@
                                             taxiFare: 50,
                                             totalFare: 0,
                                             availTaxis: taxis
-                                            });successMessage=true;$refs.successMessage.innerText = 'destination added'; setTimeout(() => { successMessage=false }, 2000);isModalOpen=false">Save</button>
+                                            });successMessage=true;$refs.successMessage.innerText = 'destination added'; setTimeout(() => { successMessage=false }, 2000);isModalOpen=false"
+                                            
+                                           
+                                            >Save</button>
                                         <button class="dark" aria-label="Close"
                                             x-on:click="isModalOpen=false">Close Window</button>
                                     </span>
@@ -92,9 +95,9 @@
                         
                       <!--div x-data="{ dailyProfit:  $persist(0)}">
                         Total profit for today: R <span x-text="dailyProfit.toFixed(2)"></span-->
-                            <!--div>
-                                <strong>Total profit for the day: R<span x-text="_.sumBy(rank, function(taxi) {return taxi.taxiFareTotal})"></span></strong>
-                            </div-->
+                          
+                                <!--strong>Total profit for the day: R<span x-text="_.sumBy(rank, function(taxi) {return taxi.taxiFareTotal}).toFixed(2)"></span></strong-->
+                           
                             <table class="table">
 <thead>
                                 <tr>
@@ -122,6 +125,7 @@
                                     <td>
                                         <button class="btn" x-on:click="taxi.passenger++">+</button>
                                         <span x-text="taxi.passenger"></span>
+                                      
                                         <button class="btn" x-on:click="if (taxi.passenger >= 1) {taxi.passenger--}">-</button>
                                     </td>
 
@@ -162,7 +166,6 @@
 
   
   
-
    
 </body>
 
